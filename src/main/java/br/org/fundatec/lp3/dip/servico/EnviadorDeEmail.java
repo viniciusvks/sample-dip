@@ -1,4 +1,4 @@
-package br.org.fundatec.lp3.dip;
+package br.org.fundatec.lp3.dip.servico;
 
 public class EnviadorDeEmail {
     public void enviarEmail(String emailContato) {
