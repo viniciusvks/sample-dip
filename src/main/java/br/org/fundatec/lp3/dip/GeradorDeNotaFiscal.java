@@ -5,10 +5,10 @@ public class GeradorDeNotaFiscal {
     public static final double ALIQUOTA = 0.06;
     private EnviadorDeEmail enviadorDeEmail;
     private NotaFiscalDao notaFiscalDao;
-    private SAP sap;
+    private GerenciadorContabil sap;
     private EnviadorDeSMS enviadorDeSMS;
 
-    public GeradorDeNotaFiscal(EnviadorDeEmail enviadorDeEmail, NotaFiscalDao notaFiscalDao, SAP sap, EnviadorDeSMS enviadorDeSMS) {
+    public GeradorDeNotaFiscal(EnviadorDeEmail enviadorDeEmail, NotaFiscalDao notaFiscalDao, GerenciadorContabil sap, EnviadorDeSMS enviadorDeSMS) {
         this.enviadorDeEmail = enviadorDeEmail;
         this.notaFiscalDao = notaFiscalDao;
         this.sap = sap;
