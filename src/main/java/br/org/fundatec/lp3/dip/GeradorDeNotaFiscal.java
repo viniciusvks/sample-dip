@@ -5,25 +5,28 @@ public class GeradorDeNotaFiscal {
     public static final double ALIQUOTA = 0.06;
     private EnviadorDeEmail enviadorDeEmail;
     private NotaFiscalDao notaFiscalDao;
-    private GerenciadorContabil sap;
+    private GerenciadorContabil geranciadorContabil;
     private EnviadorDeSMS enviadorDeSMS;
 
-    public GeradorDeNotaFiscal(EnviadorDeEmail enviadorDeEmail, NotaFiscalDao notaFiscalDao, GerenciadorContabil sap, EnviadorDeSMS enviadorDeSMS) {
+    public GeradorDeNotaFiscal(EnviadorDeEmail enviadorDeEmail, NotaFiscalDao notaFiscalDao, GerenciadorContabil gerenciadorContabil, EnviadorDeSMS enviadorDeSMS) {
         this.enviadorDeEmail = enviadorDeEmail;
         this.notaFiscalDao = notaFiscalDao;
-        this.sap = sap;
+        this.geranciadorContabil = gerenciadorContabil;
         this.enviadorDeSMS = enviadorDeSMS;
     }
 
-    public NotaFiscal gerar(Fatura fatura) {
+    public NotaFiscal geraNF(Fatura fatura) {
 
-        double valor = fatura.getValorMensal();
+        double valor = fatura.getValor();
         double imposto = impostoSimplesSobre(valor);
+        Contato contato = fatura.getContato();
 
         NotaFiscal nf = new NotaFiscal(valor, imposto);
+        nf.setEmailContato(contato.getEmail());
+        nf.setTelefoneContato(contato.getTelefone());
 
         enviadorDeEmail.enviarEmail(nf.getEmailContato());
-        sap.contabiliza(nf.getValor());
+        geranciadorContabil.contabiliza(nf.getValor(), nf.getImposto());
         enviadorDeSMS.enviarSmsDeConfirmacao(nf.getTelefoneContato(), "Mensagem de confirmacao");
         notaFiscalDao.persiste(nf);
 
