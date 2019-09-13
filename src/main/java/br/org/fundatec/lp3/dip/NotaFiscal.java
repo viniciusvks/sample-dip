@@ -3,23 +3,37 @@ package br.org.fundatec.lp3.dip;
 public class NotaFiscal {
 
     private double valor;
+    private double imposto;
+    private String emailContato;
+    private String telefoneContato;
 
-    public NotaFiscal(double valor, double imposto) {
+	public NotaFiscal(double valor, double imposto) {
         this.valor = valor;
-        System.out.println(String.format("nova Nota Fiscal com valor %d, imposto %d", valor, imposto));
+        this.imposto = imposto;
     }
 
     public String getEmailContato() {
-        return "";
+        return emailContato;
     }
+    
+    public void setEmailContato(String emailContato) {
+		this.emailContato = emailContato;
+	}
 
     public double getValor() {
         return valor;
     }
-
-    public String getTelefoneContato() {
-
-        return "55984297927";
-
+    
+    public double getImposto() {
+    	return imposto;
     }
+    
+    public String getTelefoneContato() {
+        return telefoneContato;
+    }
+    
+    public void setTelefoneContato(String telefoneContato) {
+		this.telefoneContato = telefoneContato;
+	}
 }
+

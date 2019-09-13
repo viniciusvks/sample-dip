@@ -13,12 +13,15 @@ public class GeradorDeNotaFiscal {
     	this.acoes = acoes;
     }
 
-    public NotaFiscal gerar(Fatura fatura) {
+    public NotaFiscal geraNF(Fatura fatura) {
 
-        double valor = fatura.getValorMensal();
+        double valor = fatura.getValor();
         double imposto = impostoSimplesSobre(valor);
+        Contato contato = fatura.getContato();
 
         NotaFiscal notaFiscal = new NotaFiscal(valor, imposto);
+        notaFiscal.setEmailContato(contato.getEmail());
+        notaFiscal.setTelefoneContato(contato.getTelefone());
         
         for(AcaoAposGerarNota acao : acoes) {
         	acao.executa(notaFiscal);

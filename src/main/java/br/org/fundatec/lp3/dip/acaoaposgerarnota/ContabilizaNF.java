@@ -13,7 +13,7 @@ public class ContabilizaNF implements AcaoAposGerarNota {
 
 	@Override
 	public void executa(NotaFiscal notaFiscal) {
-		gerenciadorContabil.contabiliza(notaFiscal.getValor());
+		gerenciadorContabil.contabiliza(notaFiscal.getValor(), notaFiscal.getImposto());
 	}
 
 }
