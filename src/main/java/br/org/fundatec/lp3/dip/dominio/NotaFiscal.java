@@ -1,4 +1,4 @@
-package br.org.fundatec.lp3.dip;
+package br.org.fundatec.lp3.dip.dominio;
 
 public class NotaFiscal {
 
@@ -15,7 +15,7 @@ public class NotaFiscal {
     public String getEmailContato() {
         return emailContato;
     }
-    
+
     public void setEmailContato(String emailContato) {
 		this.emailContato = emailContato;
 	}
@@ -23,15 +23,15 @@ public class NotaFiscal {
     public double getValor() {
         return valor;
     }
-    
+
     public double getImposto() {
     	return imposto;
     }
-    
+
     public String getTelefoneContato() {
         return telefoneContato;
     }
-    
+
     public void setTelefoneContato(String telefoneContato) {
 		this.telefoneContato = telefoneContato;
 	}

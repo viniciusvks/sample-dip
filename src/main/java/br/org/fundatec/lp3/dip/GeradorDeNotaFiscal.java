@@ -3,6 +3,9 @@ package br.org.fundatec.lp3.dip;
 import java.util.List;
 
 import br.org.fundatec.lp3.dip.acaoaposgerarnota.AcaoAposGerarNota;
+import br.org.fundatec.lp3.dip.dominio.Contato;
+import br.org.fundatec.lp3.dip.dominio.Fatura;
+import br.org.fundatec.lp3.dip.dominio.NotaFiscal;
 
 public class GeradorDeNotaFiscal {
 
@@ -22,11 +25,11 @@ public class GeradorDeNotaFiscal {
         NotaFiscal notaFiscal = new NotaFiscal(valor, imposto);
         notaFiscal.setEmailContato(contato.getEmail());
         notaFiscal.setTelefoneContato(contato.getTelefone());
-        
+
         for(AcaoAposGerarNota acao : acoes) {
         	acao.executa(notaFiscal);
         }
-        
+
         return notaFiscal;
 
     }
